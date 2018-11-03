@@ -16,6 +16,7 @@ def places():
     foods = request.form['foods'].split(',')
     restaurants = None 
     # do some call here to get final list of restaurants returned
+    assert isinstance(restaurants, list), 'Returned item is not list!'
     return restaurants
     # return render_template('name_of_html_here) # name of file to be returned.
 
