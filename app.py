@@ -17,8 +17,10 @@ def places():
     restaurants = None 
     # do some call here to get final list of restaurants returned
     assert isinstance(restaurants, list), 'Returned item is not list!'
-    return restaurants
+    restaurants_string = ','.join(rest)
+    return render_template('response.html', restaurants=restaurants_string)
     # return render_template('name_of_html_here) # name of file to be returned.
+    
 
 if __name__ == "__main__":
     application.run()
