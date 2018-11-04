@@ -30,6 +30,7 @@ function RegisterController($scope,$http){
   };
 
    $scope.submit=function(){
+      var threshold = $scope.threshold;
      
  // $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
  //    $scope.firstname="";

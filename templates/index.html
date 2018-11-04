@@ -27,7 +27,6 @@
   <h1>DELECT</h1>
   <h3>Find restaurants around you by selecting your diet.</h3>
   <br>
-  <br>
   <div class="row">
     <form class="form-horizontal" name="frm" ng-submit="adddetails()"  novalidate>
       <br>
@@ -37,17 +36,39 @@
                 <label class="control-label pull-right" for="namefirst">Food Name:</label>
               </div>
               <div class="col-md-6">
-                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food name here." ng-model="firstname" name="uName"
+                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food name here. Ex: Brunch" ng-model="firstname" name="uName"
                  ng-required="true"/>
               </div>
               <div class="col-md-2">
             <button class="btn btn-primary" ng-disabled="frm.$invalid">Add</button>
           </div>
         </div>         
+      <div class="form-group">
+    </form>  
+   </div>
+
+   <div class="row">
+    <form class="form-horizontal">
+      
+        <div class="form-group">
+              <div class="col-md-2 col-md-offset-1">
+                <label class="control-label pull-right" for="namefirst">Threshold:</label>
+              </div>
+              <!-- <div class="col-md-7">
+                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food name here." ng-model="threshold" name="uName"
+                 ng-required="true"/>
+              </div> -->
+
+              <div class="col-md-7">
+                <input type="text" class="form-control" ng-minlength="1" ng-maxlength="25" placeholder="What threshold of foods do you want? Ex: 0.5 (A restaurant can have 50% or more of the foods you list.)" ng-model="threshold" ng-required="true"/>
+              </div>
+
+        </div>         
       <br>
       <div class="form-group">
     </form>  
    </div>
+
   </div>
   
   <div class="container">
@@ -55,7 +76,7 @@
     <table class="table table-hover">
           <thead>
             <tr>
-              <th>Food: (Ex: Brunch)</th>
+              <th>Food: (Ex: Burritos)</th>
               <th>Edit</th>
               <th>Delete</th>
               </tr>

@@ -20,6 +20,7 @@ def main():
 def places():
     assert 'foods' in request.form, "Argument 'foods' not passed!"
     foods = request.form['foods'].split(',')
+    # threshold = request.form
     print(foods)
     #foods = ['burrito', 'apple', 'beef', 'taco']
     restaurants_dict = find_matches_without_reviews(foods, 0.5, backend_client)
