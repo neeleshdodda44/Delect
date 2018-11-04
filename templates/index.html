@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Delect</title>
-      <link rel="stylesheet" src="css/style.css">
+      <link rel="stylesheet" src="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
         <div class="form-group" ng-class="{'has-error':frm.uName.$invalid && !frm.uName.$pristine}">
             <label class="control-label col-sm-2" for="namefirst">Food Name:</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food here." ng-model="firstname" name="uName"
+                <input type="text" class="form-control" id="namefirst" ng-minlength="3" ng-maxlength="25" placeholder="Put food here." ng-model="firstname" name="uName"
                  ng-required="true"/>
               </div>
         </div>         
@@ -110,7 +110,7 @@
   
   
 
-    <script src = "js/index.js"></script>
+    <script src = "{{ url_for('static', filename='js/index.js') }}"></script>
 
 
 
