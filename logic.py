@@ -1,38 +1,35 @@
 import backend_client
 import string
+import collections
 
-latitude = "37.87"
-longitude = "-122.26"
+def find_matches_without_reviews(food_list, percent, client):
+	restaurant_results = []
+	restaurant_results_final = []
+	restaurant_counts = collections.defaultdict(list)
 
-client = backend_client.Yelp_Client(latitude, longitude)
-
-food_list = ["chicken", "pizza", "salad", "coffee"]
-
-food_to_restaurants = client.get_restaurants_by_foods(food_list) #dict{food:[(restaurant, id)]}
-
-restaurant_results = []
-restaurant_results_final = []
-restaurant_counts = {}
-
-def find_matches_without_reviews():
+	food_to_restaurants = client.get_restaurants_by_foods(food_list)
 	for food in food_to_restaurants.keys():
 		#print(food_to_restaurants[food])
 		restaurants_with_food = food_to_restaurants[food] #[(restaurant, id)] corresponding to food
-		print(food_to_restaurants[food])
+		#print(food_to_restaurants[food])
+		found = set()
 		for restaurant, id in restaurants_with_food: #restaurant, id in [(restaurant, id)]
 			restaurant_results.append((restaurant, food))
-			if restaurant in restaurant_counts:
-				restaurant_counts[restaurant] += 1
-			else:
-				restaurant_counts[restaurant] = 1
+			if restaurant not in found:
+				restaurant_counts[restaurant].append(food)
+			found.add(restaurant)
 
-	for restaurant, id in restaurant_results:
-		if restaurant_counts[restaurant] >= 2:
-			restaurant_results_final.append((restaurant, id))
-	print(restaurant_results)
-	print(restaurant_counts)
-	print(restaurant_results_final)
+	return_list = collections.defaultdict(list)
+	for restaurant, food in restaurant_results:
+		if len(restaurant_counts[restaurant]) >= len(food_list) * percent:
+			return_list[restaurant] = restaurant_counts[restaurant]
+	return return_list
+	#print(restaurant_results)
+	#print(restaurant_counts)
+	#print(return_list)
+	#print(len(food_list) * percent)
 
+"""
 def find_matches_with_reviews():
 	for food in food_to_restaurants.keys():
 		#print(food_to_restaurants[food])
@@ -65,9 +62,10 @@ def find_matches_with_reviews():
 	print(restaurant_results)
 	print(restaurant_counts)
 	print(restaurant_results_final)
+"""
 
-#find_matches_without_reviews()
-find_matches_with_reviews()
+print(find_matches_without_reviews(["chicken", "pizza", "salad", "coffee"], .5, backend_client.Yelp_Client("37.87", "-122.26")))
+#find_matches_with_reviews()
 # import string
 #
 # review_string = "hello! how are you doing today? isn't it such a great day today"

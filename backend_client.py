@@ -14,8 +14,6 @@ class Yelp_Client:
         self.headers = {'Authorization': "Bearer " + self.api_key}
         #cache of (k, v) -> (food, (restaurant, id)[])
         self.cache_rest = {}
-        #cache of (k, v) -> (restaurant, review[])
-        self.cache_rev = {}
 
         #cache of (k, v) -> (business id, review[])
         self.reviews = collections.defaultdict(list)
@@ -36,7 +34,7 @@ class Yelp_Client:
 
     #returns (restaurant, id)[5] associated with that food
     def get_restaurant_by_food(self, food):
-        params = {"term": food, "latitude": self.lat, "longitude": self.lon, "limit": 5}
+        params = {"term": food, "latitude": self.lat, "longitude": self.lon, "limit": 30}
         response = requests.get(url=self.search_base, params=params, headers=self.headers)
         return [(jsn["name"], jsn["id"]) for jsn in response.json()["businesses"]]
 
