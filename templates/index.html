@@ -3,21 +3,128 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Delect</title>
-      <link rel="stylesheet" src="{{ url_for('static', filename='css/style.css') }}">
+  <title>Delect</title>   
 </head>
 
 <body>
 
   <html ng-app>
-  <head>
-    
-    
+  <head> 
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://code.angularjs.org/1.2.3/angular.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <script src = "../static/js/index.js"></script>
+    </head>
+
+  <body>
+<div class="container" ng-controller="RegisterController">
+  <div class="row">
+    <form class="form-horizontal" name="frm" ng-submit="adddetails()"  novalidate>
+      <br>
+      <br>
+      <div class="col-md-12">
+      <h1>Delect</h1>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+        <div class="form-group" ng-class="{'has-error':frm.uName.$invalid && !frm.uName.$pristine}">
+            <label class="control-label col-sm-2" for="namefirst">Food Name:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food name here." ng-model="firstname" name="uName"
+                 ng-required="true"/>
+              </div>
+              <div class=" col-sm-1">
+            <button class="btn btn-primary" ng-disabled="frm.$invalid">Add</button>
+          </div>
+        </div>         
+      <br>
+      <div class="form-group">
+    </form>  
+   </div>
+  </div>
+     
+<table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Food: (Ex: Brunch)</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr ng-repeat="detail in details">
+            <td>
+              <div ng-hide="tickcross[detail.id]" ng-bind="detail.firstname"></div>
+              <div ng-show="tickcross[detail.id]"><input type="text" ng-model="detail.firstname"></div>
+            </td>
+            
+            
+            <td ng-hide="tickcross[detail.id]">
+              <a href="" ng-click="modify(detail)">
+              <span class="glyphicon glyphicon-edit"></span></a>
+            </td>
+            
+            <td ng-show="tickcross[detail.id]">
+              <a href="" ng-click="update(detail)">
+              <span class="glyphicon glyphicon-ok"></span></a>
+            </td>
+           
+            <td ng-hide="tickcross[detail.id]">
+              <a href="" ng-click="deletedetail($index)" id="del">
+              <span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+            
+            </tr>
+          </tbody>
+        </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form action="{{ url_for('places') }}" method="post">
+      <input type="text" name = "foods" value = "" id = "submitb" style="visibility: hidden">
+    <input class="btn btn-primary btn-lg btn-block" name = "foods" type="submit" ng-click="submit()">
+    </form>
        
-    <script src="https://code.angularjs.org/1.2.3/angular.min.js"></script>
-    
+    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="submit()">Submit</button> -->
+   
+    </body>
+  </html>
+
+</body>
+
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Delect</title>   
+</head>
+
+<body>
+
+  <html ng-app>
+  <head> 
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://code.angularjs.org/1.2.3/angular.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <script src = "../static/js/index.js"></script>
     </head>
 
   <body>
@@ -57,14 +164,6 @@
       <div class="form-group">
         
       </div>
-      <!-- <div class="form-group">
-
-        <div class="form-group">
-          <div class=" col-sm-10 col-sm-offset-2">
-            <button class="btn btn-primary" ng-disabled="frm.$invalid">Add</button>
-          </div>
-     </div>
-       -->
     </form>
       
       </div>
@@ -117,14 +216,8 @@
    
     </body>
   </html>
-  
-  
-
-    <script src = "{{ url_for('static', filename='js/index.js') }}"></script>
-
-
-
 
 </body>
+</html> -->
 
-</html>
+
