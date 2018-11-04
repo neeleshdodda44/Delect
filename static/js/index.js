@@ -1,10 +1,12 @@
 function RegisterController($scope,$http){
-  $scope.details=[                {'firstname':"Ex: Burritos", 'id': 0}
-  ];
+  $scope.details=[];
+
+  $scope.foodList=[];
   
   $scope.adddetails=function(){
     
- $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
+    $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
+    $scope.foodList.push($scope.firstname);
     $scope.firstname="";
     
     $scope.frm.$setPristine();
