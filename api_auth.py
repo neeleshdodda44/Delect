@@ -1,2 +1,2 @@
 def get_api_key():
-    return "4w0m-oitfLkHMZGNjHHEsSArsA85VRomdp13Rcpox-tDDSj-QwK4tSL2CZ1UmnEI9xOIF474Cv6n1qocWcYyw9Kd-0itvWvOuXxsQAN2AwwtLxIPBkhf7Aa0KnrdW3Yx"
+    return "w4u1ptkyjuyB7o1tDv-LsPCUPsnvLD7gPqhTol-kofj-1pKkXcOsAyiXmMnQntWTuYC8mdceC1sHc8OPkOKdqyv6OMW-BWok6g55AUbbhzJvqsiZs-tT7tloyjfeW3Yx"
