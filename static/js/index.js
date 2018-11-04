@@ -4,7 +4,6 @@ function RegisterController($scope,$http){
   $scope.foodList=[];
   
   $scope.adddetails=function(){
-    console.log('fuck');
     $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
     $scope.foodList.push($scope.firstname);
     $scope.firstname="";

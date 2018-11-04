@@ -5,13 +5,29 @@
     <meta charset="UTF-8">
     <title>Delect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="{{ url_for('static', filename='css/style.css') }}">
-    <script src = "{{ url_for('static', filename='js/index.js') }}"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script src = "../static/js/index.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark:400,700" rel="stylesheet">
 </head>
 
 <body>
-    <div id="Main">The following are the recommended restaurants for you.
-
+    <div class="container">
+        <h2>Here are some recommendations around you.</h2>
+        <div class="col-md-8 col-md-offset-2">
+            
+            <br>
+                <ul class="list-group">
+                    <div id="Main">
+                      <!-- <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li> -->
+                    </div>
+                </ul>            
+        </div>
     </div>
       
 </body>
@@ -20,12 +36,12 @@
     var restaurants = "{{ restaurants | safe}}".split(';');
 
     if (restaurants.length == 0) {
-        document.getElementById('Main').innerHTML += "Sorry! No results found."
+        document.getElementById('Main').innerHTML += "<p>Sorry! No results found.</p>"
     } else {
         var i = 0;
         while (i < restaurants.length) {
             restaurant = restaurants[i];
-            document.getElementById('Main').innerHTML += "<p>" + restaurant + "</p>";
+            document.getElementById('Main').innerHTML += '<li class="list-group-item">' + restaurant + '</li>';
             i++;
         }
     }
