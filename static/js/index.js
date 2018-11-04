@@ -1,3 +1,7 @@
+function update_threshold() {
+  document.getElementById('thresholdb').value = document.getElementById('threshold').value
+}
+
 function RegisterController($scope,$http){
   $scope.details=[];
 

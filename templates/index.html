@@ -60,7 +60,7 @@
               </div> -->
 
               <div class="col-md-7">
-                <input type="text" class="form-control" ng-minlength="1" ng-maxlength="25" placeholder="What threshold of foods do you want? Ex: 0.5 (A restaurant can have 50% or more of the foods you list.)" ng-model="threshold" ng-required="true"/>
+                <input type="text" id="threshold" onchange="update_threshold()" class="form-control" ng-minlength="1" ng-maxlength="25" placeholder="What threshold of foods do you want? Ex: 0.5 (A restaurant can have 50% or more of the foods you list.)" ng-model="threshold" ng-required="true"/>
               </div>
 
         </div>         
@@ -116,6 +116,7 @@
       <div class="col-md-6 col-md-offset-3">
           <form action="{{ url_for('places') }}" method="post">
           <input type="text" name = "foods" value = "" id = "submitb" style="visibility: hidden">
+          <input type="text" name="threshold" value="" id="thresholdb" style="visibility: hidden">
         <input class="btn btn-primary btn-lg btn-block" name = "foods" type="submit" ng-click="submit()">
         </form>
   </div>
