@@ -22,12 +22,17 @@ def places():
     foods = request.form['foods'].split(',')
     print(foods)
     #foods = ['burrito', 'apple', 'beef', 'taco']
-    restaurants = list(find_matches_without_reviews(foods, 0.5, backend_client).keys())
-    print(restaurants)
+    restaurants_dict = find_matches_without_reviews(foods, 0.5, backend_client)
+    keys = list(restaurants_dict.keys())
+    values = list([', '.join(value) for value in restaurants_dict.values()])
+    str_format = "{key}: {value}"
+    print(keys)
+    print(values)
+    combined = ';'.join([str_format.format(key=key, value=value) for key,value in zip(keys,values)])
     # do some call here to get final list of restaurants returned
-    assert isinstance(restaurants, list), 'Returned item is not list!'
-    restaurants_string = ','.join(restaurants)
-    return render_template('response.html', restaurants=restaurants_string)
+    # assert isinstance(restaurants, list), 'Returned item is not list!'
+    # restaurants_string = ','.join(restaurants)
+    return render_template('response.html', restaurants=combined)
     # return render_template('name_of_html_here) # name of file to be returned.
     
 

@@ -17,7 +17,7 @@
 </body>
 
 <script type="text/javascript" >
-    var restaurants = "{{ restaurants | safe}}".split(',');
+    var restaurants = "{{ restaurants | safe}}".split(';');
 
     if (restaurants.length == 0) {
         document.getElementById('Main').innerHTML += "Sorry! No results found."
