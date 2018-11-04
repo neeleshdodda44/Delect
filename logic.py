@@ -64,7 +64,7 @@ def find_matches_with_reviews():
 	print(restaurant_results_final)
 """
 
-print(find_matches_without_reviews(["chicken", "pizza", "salad", "coffee"], .5, backend_client.Yelp_Client("37.87", "-122.26")))
+#print(find_matches_without_reviews(["chicken", "pizza", "salad", "coffee"], .5, backend_client.Yelp_Client("37.87", "-122.26")))
 #find_matches_with_reviews()
 # import string
 #

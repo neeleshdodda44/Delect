@@ -9,27 +9,24 @@
 </head>
 
 <body>
-    <div id="Main">The following are the top three restaurants for you.</div>
-    <div id="first"></div>
-    <div id="second"></div>
-    <div id="third"></div>
+    <div id="Main">The following are the recommended restaurants for you.
+
+    </div>
       
 </body>
 
 <script type="text/javascript" >
     var restaurants = "{{ restaurants | safe}}".split(',');
-    console.log(restaurants);
 
-    if (restaurants.length < 3) {
-        console.error("Restaurants length was shorter than expected.")
+    if (restaurants.length == 0) {
+        document.getElementById('Main').innerHTML += "Sorry! No results found."
+    } else {
+        var i = 0;
+        while (i < restaurants.length) {
+            restaurant = restaurants[i];
+            document.getElementById('Main').innerHTML += "<p>" + restaurant + "</p>";
+            i++;
+        }
     }
-
-    var one = restaurants[0];
-    var two = restaurants[1];
-    var three = restaurants[2];
-
-    document.getElementById('first').innerHTML = one;
-    document.getElementById('second').innerHTML = two;
-    document.getElementById('third').innerHTML = three;
 </script>
 </html>
