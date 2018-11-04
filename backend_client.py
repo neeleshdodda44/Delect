@@ -36,7 +36,7 @@ class Yelp_Client:
 
     #returns (restaurant, id)[5] associated with that food
     def get_restaurant_by_food(self, food):
-        params = {"term": food, "latitude": self.lat, "longitude": self.lon, "limit": 5}
+        params = {"term": food, "latitude": self.lat, "longitude": self.lon, "limit": 30}
         response = requests.get(url=self.search_base, params=params, headers=self.headers)
         return [(jsn["name"], jsn["id"]) for jsn in response.json()["businesses"]]
 
@@ -49,5 +49,5 @@ class Yelp_Client:
 
 #test
 #returns {'burrito': ['Tacos Sinaloa', 'La Mission', 'La Burrita', 'Fresco Mexican Grill', 'Gordito Amigos']}
-client = Yelp_Client("37.87", "-122.26")
-print(client.get_reviews_for_restaurant('q33FT8iYvU2UUbJuiEQWUw'))
+# client = Yelp_Client("37.87", "-122.26")
+# print(client.get_reviews_for_restaurant('q33FT8iYvU2UUbJuiEQWUw'))
