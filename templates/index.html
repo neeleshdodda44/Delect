@@ -70,7 +70,7 @@
       </div>
     </div>
      
-<table class="table table-hover">
+<table id="lit" class="table table-hover">
         <thead>
           <tr>
             <th>Food (Ex: Burritos)</th>
@@ -109,9 +109,9 @@
     <br>
     <br>
     <br>
-    <form action="/places" method="post">
-    <input class="btn btn-primary btn-lg btn-block" type="submit" id = "submitb"  ng-click="submit()">
-    
+    <form action="{{ url_for('places') }}" method="post">
+      <input type="text" name = "foods" value = "" id = "submitb" style="visibility: hidden">
+    <input class="btn btn-primary btn-lg btn-block" name = "foods" type="submit" ng-click="submit()">
     </form>
     
    

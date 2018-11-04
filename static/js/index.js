@@ -4,11 +4,24 @@ function RegisterController($scope,$http){
   $scope.foodList=[];
   
   $scope.adddetails=function(){
-    
+    console.log('fuck');
     $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
     $scope.foodList.push($scope.firstname);
     $scope.firstname="";
-    
+    console.log($scope.foodList)
+
+    var foods = "";
+    if ($scope.foodList.length >= 1) {
+      foods = $scope.foodList[0]
+      if ($scope.foodList.length >= 2) {
+        var index = 1;
+        while (index < $scope.foodList.length) {
+          foods = foods + "," + $scope.foodList[index];
+          index ++;
+        }
+      }
+    }
+    document.getElementById('submitb').value = foods;
     $scope.frm.$setPristine();
   }
   
@@ -18,6 +31,7 @@ function RegisterController($scope,$http){
   };
 
    $scope.submit=function(){
+     
  // $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
  //    $scope.firstname="";
     

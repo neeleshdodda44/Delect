@@ -18,9 +18,10 @@ def main():
 
 @application.route("/places", methods=['GET', 'POST'])
 def places():
-    #assert 'foods' in request.form, "Argument 'foods' not passed!"
-    #foods = request.form['foods'].split(',')
-    foods = ['burrito', 'apple', 'beef', 'taco']
+    assert 'foods' in request.form, "Argument 'foods' not passed!"
+    foods = request.form['foods'].split(',')
+    print(foods)
+    #foods = ['burrito', 'apple', 'beef', 'taco']
     restaurants = list(find_matches_without_reviews(foods, 0.5, backend_client).keys())
     print(restaurants)
     # do some call here to get final list of restaurants returned
