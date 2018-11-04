@@ -42,7 +42,7 @@
         <div class="form-group" ng-class="{'has-error':frm.uName.$invalid && !frm.uName.$pristine}">
             <label class="control-label col-sm-2" for="namefirst">Food Name:</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="namefirst" ng-minlength="3" ng-maxlength="25" placeholder="Put food here." ng-model="firstname" name="uName"
+                <input type="text" class="form-control" id="namefirst" ng-minlength="1" ng-maxlength="25" placeholder="Put food here." ng-model="firstname" name="uName"
                  ng-required="true"/>
               </div>
         </div>         
@@ -63,7 +63,7 @@
 <table class="table table-hover">
         <thead>
           <tr>
-            <th>Food</th>
+            <th>Food {{foodString}}</th>
             <th></th>
             <th></th>
             </tr>
@@ -71,7 +71,7 @@
         <tbody>
           <tr ng-repeat="detail in details">
             <td>
-              <div ng-hide="tickcross[detail.id]">{{detail.firstname}}</div>
+              <div ng-hide="tickcross[detail.id]" ng-bind="detail.firstname"></div>
               <div ng-show="tickcross[detail.id]"><input type="text" ng-model="detail.firstname"></div>
             </td>
             

@@ -1,16 +1,19 @@
 function RegisterController($scope,$http){
   $scope.details=[                {'firstname':"Ex: Burritos", 'id': 0}
   ];
+
+  $scope.foodList=[];
   
   $scope.adddetails=function(){
- $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
+    $scope.details.push({'firstname':$scope.firstname, 'id':$scope.details.length})
+    $scope.foodString.push($scope.firstname);
     $scope.firstname="";
-    
+    // $scope.foodString = $scope.foodString + $scope.firstname + ",";
     $scope.frm.$setPristine();
   }
   
   $scope.deletedetail=function(index){
-     $scope.details.splice(index,1);  
+     $scope.details.splice(index,1);
     $("#del").fadeOut(2000);
   };
 
